@@ -36,11 +36,22 @@ describe('TestDataFactoryTest', () => {
             expect(Factory.cloneDeep(data)).to.eql(data);
             expect(Factory.cloneDeep(data)).not.to.equal(data);
         });
-
         it('[]', () => {
             const data = [];
             expect(Factory.cloneDeep(data)).to.eql(data);
             expect(Factory.cloneDeep(data)).not.to.equal(data);
+        });
+        it('array modify', () => {
+            const data = [1, 2, 3];
+            const clone = Factory.cloneDeep(data);
+
+            data[0] = 0;
+            clone[2] = 2;
+
+            expect(data[0]).to.equal(0);
+            expect(clone[0]).to.equal(1);
+            expect(data[2]).to.equal(3);
+            expect(clone[2]).to.equal(2);
         });
 
         it('object', () => {
@@ -48,11 +59,22 @@ describe('TestDataFactoryTest', () => {
             expect(Factory.cloneDeep(data)).to.eql(data);
             expect(Factory.cloneDeep(data)).not.to.equal(data);
         });
-
         it('{}', () => {
             const data = {};
             expect(Factory.cloneDeep(data)).to.eql(data);
             expect(Factory.cloneDeep(data)).not.to.equal(data);
+        });
+        it('object modify', () => {
+            const data = { a: 1, b: 'bebe' };
+            const clone = Factory.cloneDeep(data);
+
+            data.a = 0;
+            clone.b = 'come';
+
+            expect(data.a).to.equal(0);
+            expect(clone.a).to.equal(1);
+            expect(data.b).to.equal('bebe');
+            expect(clone.b).to.equal('come');
         });
     });
 });
