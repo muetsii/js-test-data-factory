@@ -42,5 +42,17 @@ describe('TestDataFactoryTest', () => {
             expect(Factory.cloneDeep(data)).to.eql(data);
             expect(Factory.cloneDeep(data)).not.to.equal(data);
         });
+
+        it('object', () => {
+            const data = { a: 1, b: 'bebe' };
+            expect(Factory.cloneDeep(data)).to.eql(data);
+            expect(Factory.cloneDeep(data)).not.to.equal(data);
+        });
+
+        it('{}', () => {
+            const data = {};
+            expect(Factory.cloneDeep(data)).to.eql(data);
+            expect(Factory.cloneDeep(data)).not.to.equal(data);
+        });
     });
 });

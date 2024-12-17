@@ -17,8 +17,10 @@ class TestDataFactory {
 
         if (typeof data == 'object') {
             const newData = {};
-            for (let i = 0; i < data.length; i++) {
-                newData[i] = TestDataFactory.cloneDeep(data[i]);
+            for (let key in data) {
+                if (Object.hasOwn(data, key)) {
+                    newData[key] = TestDataFactory.cloneDeep(data[key]);
+                }
             }
 
             return newData;
