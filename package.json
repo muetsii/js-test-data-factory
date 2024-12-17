@@ -1,0 +1,24 @@
+{
+  "name": "js-test-data-factory",
+  "version": "0.0.0",
+  "description": "Factory that allows definition of test data as object templates that can be reused and mixed",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muetsii/js-test-data-factory.git"
+  },
+  "keywords": [
+    "test",
+    "factory",
+    "data"
+  ],
+  "author": "",
+  "license": "LGPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/muetsii/js-test-data-factory/issues"
+  },
+  "homepage": "https://github.com/muetsii/js-test-data-factory#readme"
+}
