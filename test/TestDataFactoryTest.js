@@ -76,5 +76,22 @@ describe('TestDataFactoryTest', () => {
             expect(data.b).to.equal('bebe');
             expect(clone.b).to.equal('come');
         });
+
+        it('array with object', () => {
+            const data = [1, 'dos', { n: 3 }];
+            const clone = Factory.cloneDeep(data);
+
+            expect(data).to.eql(clone);
+            expect(data[0]).to.equal(clone[0]);
+            expect(data[2]).not.to.equal(clone[2]);
+        });
+        it('object with array', () => {
+            const data = { a: 1, b: 'dos', c: [1, 2, 3]};
+            const clone = Factory.cloneDeep(data);
+
+            expect(data).to.eql(clone);
+            expect(data.a).to.equal(clone.a);
+            expect(data.c).not.to.equal(clone.c);
+        });
     });
 });
