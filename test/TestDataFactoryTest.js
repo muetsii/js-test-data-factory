@@ -30,5 +30,17 @@ describe('TestDataFactoryTest', () => {
         it('false', () => {
             expect(Factory.cloneDeep(false)).to.equal(false);
         });
+
+        it('[1, 2, 3]', () => {
+            const data = [1, 2, 3];
+            expect(Factory.cloneDeep(data)).to.eql(data);
+            expect(Factory.cloneDeep(data)).not.to.equal(data);
+        });
+
+        it('[]', () => {
+            const data = [];
+            expect(Factory.cloneDeep(data)).to.eql(data);
+            expect(Factory.cloneDeep(data)).not.to.equal(data);
+        });
     });
 });
