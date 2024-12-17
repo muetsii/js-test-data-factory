@@ -4,7 +4,7 @@
   "description": "Factory that allows definition of test data as object templates that can be reused and mixed",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "repository": {
     "type": "git",
@@ -20,5 +20,10 @@
   "bugs": {
     "url": "https://github.com/muetsii/js-test-data-factory/issues"
   },
-  "homepage": "https://github.com/muetsii/js-test-data-factory#readme"
+  "homepage": "https://github.com/muetsii/js-test-data-factory#readme",
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "mocha": "^11.0.1"
+  },
+  "type": "module"
 }

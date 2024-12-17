@@ -3,8 +3,11 @@ import Factory from '../src/TestDataFactory.js';
 
 describe('TestDataFactoryTest', () => {
     describe('cloneDeep', () => {
-        it('integer', () => {
-            expect(Factory.cloneDeep(5)).to.equal(5);
+        it('number', () => {
+            expect(Factory.cloneDeep(5.1)).to.equal(5.1);
+        });
+        it('0', () => {
+            expect(Factory.cloneDeep(0)).to.equal(0);
         });
     });
 });
