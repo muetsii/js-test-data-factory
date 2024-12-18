@@ -94,4 +94,48 @@ describe('TestDataFactoryTest', () => {
             expect(data.c).not.to.equal(clone.c);
         });
     });
+    describe('createFromTemplate', () => {
+        const templates = {
+            toreador: { name: 'Toreador', disciplines: ['Auspex', 'Celerity', 'Presence' ]},
+            ventrue:  { name: 'Ventrue',  disciplines: ['Dominate', 'Fortitude', 'Presence' ]},
+        };
+        const factory = new Factory(templates);
+
+        it('creates an equal but different object', () => {
+            const vampire = factory.createFromTemplate('toreador');
+            expect(vampire).to.eql(templates.toreador);
+            expect(vampire).not.to.equal(templates.toreador);
+        });
+
+        it('uses different templates', () => {
+            const artist = factory.createFromTemplate('toreador');
+            const fascist = factory.createFromTemplate('ventrue');
+            expect(artist).to.eql(templates.toreador);
+            expect(fascist).to.eql(templates.ventrue);
+        });
+
+        it('creates independent objects', () => {
+            const brujah = factory.createFromTemplate('toreador');
+            const setite = factory.createFromTemplate('toreador');
+
+            brujah.name = 'Brujah';
+            brujah.disciplines[0] = 'Potence';
+
+            setite.name = 'Setite';
+            setite.disciplines[0] = 'Obfuscate';
+
+            expect(brujah.name).to.equal('Brujah');
+            expect(brujah.disciplines[0]).to.equal('Potence');
+
+            expect(setite.name).to.equal('Setite');
+            expect(setite.disciplines[0]).to.equal('Obfuscate');
+
+            expect(templates.toreador.name).to.equal('Toreador');
+            expect(templates.toreador.disciplines[0]).to.equal('Auspex');
+        });
+
+        it('throws with unknown template', () => {
+            expect(() => factory.createFromTemplate('caitiff')).to.throw();
+        });
+    });
 });

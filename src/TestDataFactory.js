@@ -28,6 +28,18 @@ class TestDataFactory {
 
         return data;
     }
+
+    createFromTemplate(templateName) {
+        if (!Object.hasOwn(this.templates, templateName)) {
+            throw new Error(`I dont have template "${templateName}"`);
+        }
+
+        return this.constructor.cloneDeep(this.templates[templateName]);
+    }
+
+    createDefault() {
+        return this.getFromTamplate('default');
+    }
 }
 
 export default TestDataFactory;
